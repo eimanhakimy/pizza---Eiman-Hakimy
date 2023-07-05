@@ -1,4 +1,12 @@
+                <!-- /*!
+* Author Name: MH RONY.
+* GigHub Link: https://github.com/dev-mhrony
+* Facebook Link:https://www.facebook.com/dev.mhrony
+* Youtube Link: https://www.youtube.com/channel/UChYhUxkwDNialcxj-OFRcDw
+for any PHP, Laravel, Python, Dart, Flutter work contact me at developer.mhrony@gmail.com
+* Visit My Website : developerrony.com
 
+*/ -->
                 <!DOCTYPE html>
                 <html lang="en">
                 <?php
@@ -9,7 +17,15 @@ session_start();
 ?>
 
                 <head>
-  
+                    <!-- /*!
+* Author Name: MH RONY.
+* GigHub Link: https://github.com/dev-mhrony
+* Facebook Link:https://www.facebook.com/dev.mhrony
+* Youtube Link: https://www.youtube.com/channel/UChYhUxkwDNialcxj-OFRcDw
+for any PHP, Laravel, Python, Dart, Flutter work contact me at developer.mhrony@gmail.com
+* Visit My Website : developerrony.com
+
+*/ -->
 
                     <meta charset="utf-8">
                     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -43,7 +59,15 @@ session_start();
                     </div>
 
                     <div id="main-wrapper">
- 
+                        <!-- /*!
+* Author Name: MH RONY.
+* GigHub Link: https://github.com/dev-mhrony
+* Facebook Link:https://www.facebook.com/dev.mhrony
+* Youtube Link: https://www.youtube.com/channel/UChYhUxkwDNialcxj-OFRcDw
+for any PHP, Laravel, Python, Dart, Flutter work contact me at developer.mhrony@gmail.com
+* Visit My Website : developerrony.com
+
+*/ -->
 
                         <div class="header">
                             <nav class="navbar top-navbar navbar-expand-md navbar-light">
@@ -61,7 +85,15 @@ session_start();
 
                                     <ul class="navbar-nav my-lg-0">
 
-   
+                                        <!-- /*!
+* Author Name: MH RONY.
+* GigHub Link: https://github.com/dev-mhrony
+* Facebook Link:https://www.facebook.com/dev.mhrony
+* Youtube Link: https://www.youtube.com/channel/UChYhUxkwDNialcxj-OFRcDw
+for any PHP, Laravel, Python, Dart, Flutter work contact me at developer.mhrony@gmail.com
+* Visit My Website : developerrony.com
+
+*/ -->
 
 
                                         <li class="nav-item dropdown">
@@ -78,7 +110,15 @@ session_start();
                                                 </ul>
                                             </div>
                                         </li>
+                                        <!-- /*!
+* Author Name: MH RONY.
+* GigHub Link: https://github.com/dev-mhrony
+* Facebook Link:https://www.facebook.com/dev.mhrony
+* Youtube Link: https://www.youtube.com/channel/UChYhUxkwDNialcxj-OFRcDw
+for any PHP, Laravel, Python, Dart, Flutter work contact me at developer.mhrony@gmail.com
+* Visit My Website : developerrony.com
 
+*/ -->
 
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle text-muted  " href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="images/bookingSystem/user-icn.png" alt="user" class="profile-pic" /></a>
@@ -126,7 +166,15 @@ session_start();
                                 </nav>
 
                             </div>
+                            <!-- /*!
+* Author Name: MH RONY.
+* GigHub Link: https://github.com/dev-mhrony
+* Facebook Link:https://www.facebook.com/dev.mhrony
+* Youtube Link: https://www.youtube.com/channel/UChYhUxkwDNialcxj-OFRcDw
+for any PHP, Laravel, Python, Dart, Flutter work contact me at developer.mhrony@gmail.com
+* Visit My Website : developerrony.com
 
+*/ -->
 
                         </div>
 
@@ -142,7 +190,15 @@ session_start();
                                 <div class="row">
                                     <div class="col-12">
 
+                                        <!-- /*!
+* Author Name: MH RONY.
+* GigHub Link: https://github.com/dev-mhrony
+* Facebook Link:https://www.facebook.com/dev.mhrony
+* Youtube Link: https://www.youtube.com/channel/UChYhUxkwDNialcxj-OFRcDw
+for any PHP, Laravel, Python, Dart, Flutter work contact me at developer.mhrony@gmail.com
+* Visit My Website : developerrony.com
 
+*/ -->
 
                                         <div class="col-lg-12">
                                             <div class="card card-outline-primary">
@@ -162,6 +218,15 @@ session_start();
 												
 																		
 												?>
+                                                            <!-- /*!
+                                                * Author Name: MH RONY.
+                                                * GigHub Link: https://github.com/dev-mhrony
+                                                * Facebook Link:https://www.facebook.com/dev.mhrony
+                                                * Youtube Link: https://www.youtube.com/channel/UChYhUxkwDNialcxj-OFRcDw
+                                                for any PHP, Laravel, Python, Dart, Flutter work contact me at developer.mhrony@gmail.com
+                                                * Visit My Website : developerrony.com
+                                                
+                                                */ -->
 
 
                                                             <tr>
@@ -206,6 +271,15 @@ session_start();
                                                                     <center>$<?php echo $rows['price']; ?></center>
                                                                 </td>
 
+                                                                <!-- /*!
+* Author Name: MH RONY.
+* GigHub Link: https://github.com/dev-mhrony
+* Facebook Link:https://www.facebook.com/dev.mhrony
+* Youtube Link: https://www.youtube.com/channel/UChYhUxkwDNialcxj-OFRcDw
+for any PHP, Laravel, Python, Dart, Flutter work contact me at developer.mhrony@gmail.com
+* Visit My Website : developerrony.com
+
+*/ -->
 
                                                             </tr>
                                                             <tr>
@@ -222,7 +296,15 @@ session_start();
                                                                     <center><?php echo $rows['date']; ?></center>
                                                                 </td>
 
+                                                                <!-- /*!
+* Author Name: MH RONY.
+* GigHub Link: https://github.com/dev-mhrony
+* Facebook Link:https://www.facebook.com/dev.mhrony
+* Youtube Link: https://www.youtube.com/channel/UChYhUxkwDNialcxj-OFRcDw
+for any PHP, Laravel, Python, Dart, Flutter work contact me at developer.mhrony@gmail.com
+* Visit My Website : developerrony.com
 
+*/ -->
 
                                                             </tr>
                                                             <tr>
@@ -270,6 +352,15 @@ session_start();
 
 
 
+                                                            <!-- /*!
+* Author Name: MH RONY.
+* GigHub Link: https://github.com/dev-mhrony
+* Facebook Link:https://www.facebook.com/dev.mhrony
+* Youtube Link: https://www.youtube.com/channel/UChYhUxkwDNialcxj-OFRcDw
+for any PHP, Laravel, Python, Dart, Flutter work contact me at developer.mhrony@gmail.com
+* Visit My Website : developerrony.com
+
+*/ -->
 
 
 
@@ -287,7 +378,7 @@ session_start();
 
                     </div>
 
-                    <footer class="footer"> © 2023 - UTM PIZZA - MUHD EIMAN HAKIMY </footer>
+                    <footer class="footer"> © 2022 - Online Food Ordering System </footer>
 
                     </div>
 

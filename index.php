@@ -120,7 +120,7 @@ header("Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-i
         <div class="container">
             <div class="title text-xs-center m-b-30">
                 <h2>Popular Dishes of the Month</h2>
-                <p class="lead">Easiest way to order your favourite food among these top 6 dishes</p>
+                <p class="lead">Easiest way to order your favourite food among these top 4 dishes</p>
             </div>
             <div class="row">
             
