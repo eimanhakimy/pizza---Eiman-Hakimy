@@ -14,31 +14,31 @@ function function_alert()
 }
 
 if (empty($_SESSION["user_id"])) {
-    header('location:login.php');
+    header('Location: login.php');
+    exit();
 } else {
     foreach ($_SESSION["cart_item"] as $item) {
-        $item_total += ($item["price"] * $item["quantity"]);
+        // Sanitize input values
+        $title = mysqli_real_escape_string($db, $item["title"]);
+        $quantity = mysqli_real_escape_string($db, $item["quantity"]);
+        $price = mysqli_real_escape_string($db, $item["price"]);
 
-        if ($_POST['submit']) {
-            $SQL = "INSERT INTO users_orders (u_id, title, quantity, price) VALUES ('" . $_SESSION["user_id"] . "','" . $item["title"] . "','" . $item["quantity"] . "','" . $item["price"] . "')";
+        $item_total += ($price * $quantity);
+
+        if (isset($_POST['submit'])) {
+            $SQL = "INSERT INTO users_orders (u_id, title, quantity, price) VALUES ('" . mysqli_real_escape_string($db, $_SESSION["user_id"]) . "','" . $title . "','" . $quantity . "','" . $price . "')";
             mysqli_query($db, $SQL);
 
             unset($_SESSION["cart_item"]);
-            unset($item["title"]);
-            unset($item["quantity"]);
-            unset($item["price"]);
-            $success = "Thank you. Your order has been placed!";
-
-            function_alert();
 
             // Insert credit card information into the database if payment method is "Pay By Credit Card"
-            $paymentMethod = $_POST['mod'];
+            $paymentMethod = mysqli_real_escape_string($db, $_POST['mod']);
             if ($paymentMethod === 'paypal') {
-                $cardNumber = $_POST['card-number'];
-                $cardHolderName = $_POST['card-holder-name'];
-                $expiryMonth = $_POST['expiry-month'];
-                $expiryYear = $_POST['expiry-year'];
-                $cvv = $_POST['cvv'];
+                $cardNumber = mysqli_real_escape_string($db, $_POST['card-number']);
+                $cardHolderName = mysqli_real_escape_string($db, $_POST['card-holder-name']);
+                $expiryMonth = mysqli_real_escape_string($db, $_POST['expiry-month']);
+                $expiryYear = mysqli_real_escape_string($db, $_POST['expiry-year']);
+                $cvv = mysqli_real_escape_string($db, $_POST['cvv']);
 
                 // Encryption key for AES encryption
                 $encryptionKey = "YourEncryptionKey";
@@ -50,12 +50,16 @@ if (empty($_SESSION["user_id"])) {
                 $encryptedCardYear = encryptData($expiryYear, $encryptionKey);
                 $encryptedCardCvv = encryptData($cvv, $encryptionKey);
 
-                $insertSql = "INSERT INTO credit_cards (user_id, card_number, card_holder_name, expiry_month, expiry_year, cvv) VALUES ('" . $_SESSION['user_id'] . "', '" . $encryptedCardNumber . "', '" . $encryptedCardHolderName . "', '" . $encryptedCardMonth . "', '" . $encryptedCardYear . "', '" . $encryptedCardCvv . "')";
+                $insertSql = "INSERT INTO credit_cards (user_id, card_number, card_holder_name, expiry_month, expiry_year, cvv) VALUES ('" . mysqli_real_escape_string($db, $_SESSION['user_id']) . "', '" . $encryptedCardNumber . "', '" . $encryptedCardHolderName . "', '" . $encryptedCardMonth . "', '" . $encryptedCardYear . "', '" . $encryptedCardCvv . "')";
                 mysqli_query($db, $insertSql);
             }
+
+            $success = "Thank you. Your order has been placed!";
+            function_alert();
         }
     }
 }
+
 
 // Encryption function using AES
 function encryptData($data, $key)
@@ -289,6 +293,35 @@ function decryptData($encryptedData, $key)
                     $("#paypal-form").hide();
                 }
             });
+        });
+    </script>
+
+
+<script>
+    //validate credit card form
+        function validateForm() {
+            var paymentMethod = document.querySelector('input[name="mod"]:checked').value;
+
+            if (paymentMethod === 'paypal') {
+                var cardNumber = document.getElementById('card-number').value;
+                var cardHolderName = document.getElementById('card-holder-name').value;
+                var expiryMonth = document.getElementById('expiry-month').value;
+                var expiryYear = document.getElementById('expiry-year').value;
+                var cvv = document.getElementById('cvv').value;
+
+                if (cardNumber === "" || cardHolderName === "" || expiryMonth === "" || expiryYear === "" || cvv === "") {
+                    alert("Please fill in all the credit card details.");
+                    return false;
+                }
+            }
+        }
+
+        document.getElementById('radioStacked2').addEventListener('change', function() {
+            if (this.checked) {
+                document.getElementById('paypal-form').style.display = 'block';
+            } else {
+                document.getElementById('paypal-form').style.display = 'none';
+            }
         });
     </script>
 
