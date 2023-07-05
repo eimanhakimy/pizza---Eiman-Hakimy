@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Feb 22, 2023 at 08:03 AM
--- Server version: 8.0.30
--- PHP Version: 8.1.10
+-- Host: 127.0.0.1
+-- Generation Time: Jul 05, 2023 at 10:08 AM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 7.3.16
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `onlinefoodphp`
+-- Database: `utmpizza`
 --
 
 -- --------------------------------------------------------
@@ -28,13 +28,13 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `adm_id` int NOT NULL,
+  `adm_id` int(11) NOT NULL,
   `username` varchar(222) NOT NULL,
   `password` varchar(222) NOT NULL,
   `email` varchar(222) NOT NULL,
   `code` varchar(222) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `admin`
@@ -46,17 +46,50 @@ INSERT INTO `admin` (`adm_id`, `username`, `password`, `email`, `code`, `date`) 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `credit_cards`
+--
+
+CREATE TABLE `credit_cards` (
+  `card_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `card_number` varchar(255) NOT NULL,
+  `card_holder_name` varchar(255) NOT NULL,
+  `expiry_month` varchar(2) NOT NULL,
+  `expiry_year` varchar(4) NOT NULL,
+  `cvv` varchar(3) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `credit_cards`
+--
+
+INSERT INTO `credit_cards` (`card_id`, `user_id`, `card_number`, `card_holder_name`, `expiry_month`, `expiry_year`, `cvv`) VALUES
+(1, 9, '46365363636', 'Eiman', '05', '2026', '435'),
+(2, 9, 'YyILg5x2Tdx0SZHomgn229sC/+bZ1SY5Wz2j+okOAi0=', 'FMCNZbkVjLXmvwttkD/CXSba8VAybzcPPI4VrN5UHzE=', '04', '2026', '242'),
+(3, 9, '4OFTeTjJLDFyy4XF1Q0hHcttnci4AHqJZDvRRiWfg4c=', 'i/3YxHC01GI+39AiuO6IHNNEgJNjFpmxYLoBGK5hxYs=', '03', '2025', '255'),
+(4, 9, '9av0SDjkeRoOIu6ykvWQ6ybZk+0PSJE3oVkpySc1Oqo=', 'fqWAL0iwrjt0X6jJZIHLUSnbhdDdhA0mYaQq00gayYQ=', 'Ol', 'QsKB', 'uoH'),
+(5, 9, 'ZpW0RhBscASfh0gw0mUdEl5uZPxndOny59PpPOPNHIg=', 'nNw3WX07mIw0jIoYMufhVnhyvBJcFo4YT9YcZmScINg=', 'lH', '+Q8F', 'vhu'),
+(6, 9, 'nIhKEqGE5VcVF4gZKuSiY8eipUgaDm8f9ogZBouem4Y=', 'V0OB//q180UXbcKU3uPzMAalxIZ3KuOEC2OujVPY4Sg=', 'O9', 'LP8z', 'CZD'),
+(7, 9, 'pMIG0Dx424vgYsYwxE31GkrOp12YOV5vLKA+pudALkw=', 'XQO09VfkEm8HGIkqTscMbP4uXeSKCsJro9oDvYfMwVg=', 'gD', 'NzXC', 'dXb'),
+(8, 9, 'tUy3spzH+oCkyIu6DhlH71IHq2Xiu3wIgNTUlog8vGE=', 'eR+c6yHNiFe7n1iIPxQ1FZYhqldYxp+ifA+SWGYx2Fw=', '+7', 'MzMT', 'vU+'),
+(9, 9, 'IX37hUM6mZRLHxsAKb5xwrT1Tvm/4fv+iJ3VgtsjkcDvAaWu9G8Opo4w5FtIu0h1', 'adVCaVYhQJifKChS+hsb767Mv7AVv4VHDuow1fzjqYU=', 'Jf', 'rD7w', 'tp+'),
+(10, 9, 'IkUNLk8ZtjQJVoOAzisHPYXCfbyH31vFaKGt1z1f+BM=', '72cW9SA7FJ/JLAYpegyg794DPysu67sTVJyUUNJ6WI8=', '4h', 'vGfR', 'yIt'),
+(11, 15, 'RrRLNlGH7x5xaVrnAeAEYwRXfgklNS1mMF1nMKFOQJc=', 'suRx06DWWzhKA1MGkuUgAdIWCZe30IZZIxKQyxxSk/g=', 'bb', '8w0h', 'rJf');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `dishes`
 --
 
 CREATE TABLE `dishes` (
-  `d_id` int NOT NULL,
-  `rs_id` int NOT NULL,
+  `d_id` int(11) NOT NULL,
+  `rs_id` int(11) NOT NULL,
   `title` varchar(222) NOT NULL,
   `slogan` varchar(222) NOT NULL,
   `price` decimal(10,2) NOT NULL,
   `img` varchar(222) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `dishes`
@@ -87,12 +120,12 @@ INSERT INTO `dishes` (`d_id`, `rs_id`, `title`, `slogan`, `price`, `img`) VALUES
 --
 
 CREATE TABLE `remark` (
-  `id` int NOT NULL,
-  `frm_id` int NOT NULL,
+  `id` int(11) NOT NULL,
+  `frm_id` int(11) NOT NULL,
   `status` varchar(255) NOT NULL,
   `remark` mediumtext NOT NULL,
-  `remarkDate` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `remarkDate` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- --------------------------------------------------------
 
@@ -101,8 +134,8 @@ CREATE TABLE `remark` (
 --
 
 CREATE TABLE `restaurant` (
-  `rs_id` int NOT NULL,
-  `c_id` int NOT NULL,
+  `rs_id` int(11) NOT NULL,
+  `c_id` int(11) NOT NULL,
   `title` varchar(222) NOT NULL,
   `email` varchar(222) NOT NULL,
   `phone` varchar(222) NOT NULL,
@@ -112,8 +145,8 @@ CREATE TABLE `restaurant` (
   `o_days` varchar(222) NOT NULL,
   `address` text NOT NULL,
   `image` text NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `restaurant`
@@ -132,10 +165,10 @@ INSERT INTO `restaurant` (`rs_id`, `c_id`, `title`, `email`, `phone`, `url`, `o_
 --
 
 CREATE TABLE `res_category` (
-  `c_id` int NOT NULL,
+  `c_id` int(11) NOT NULL,
   `c_name` varchar(222) NOT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `res_category`
@@ -154,7 +187,7 @@ INSERT INTO `res_category` (`c_id`, `c_name`, `date`) VALUES
 --
 
 CREATE TABLE `users` (
-  `u_id` int NOT NULL,
+  `u_id` int(11) NOT NULL,
   `username` varchar(222) NOT NULL,
   `f_name` varchar(222) NOT NULL,
   `l_name` varchar(222) NOT NULL,
@@ -162,9 +195,17 @@ CREATE TABLE `users` (
   `phone` varchar(222) NOT NULL,
   `password` varchar(222) NOT NULL,
   `address` text NOT NULL,
-  `status` int NOT NULL DEFAULT '1',
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `status` int(11) NOT NULL DEFAULT 1,
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`u_id`, `username`, `f_name`, `l_name`, `email`, `phone`, `password`, `address`, `status`, `date`) VALUES
+(9, 'hakimy', 'Eiman', 'Hakimy', 'hakimypro55@gmail.com', '01139116582', 'edb72d893b0370cb8d6fc8536b26fac1', 'Taman U', 1, '2023-07-04 15:05:21'),
+(15, 'suvimon', 'Suvimon', 'Saja', 'kimy@gmail.com', '01139116582', 'edb72d893b0370cb8d6fc8536b26fac1', 'Taman Bunga', 1, '2023-07-05 07:40:49');
 
 -- --------------------------------------------------------
 
@@ -173,14 +214,49 @@ CREATE TABLE `users` (
 --
 
 CREATE TABLE `users_orders` (
-  `o_id` int NOT NULL,
-  `u_id` int NOT NULL,
+  `o_id` int(11) NOT NULL,
+  `u_id` int(11) NOT NULL,
   `title` varchar(222) NOT NULL,
-  `quantity` int NOT NULL,
+  `quantity` int(11) NOT NULL,
   `price` decimal(10,2) NOT NULL,
   `status` varchar(222) DEFAULT NULL,
-  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `date` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `users_orders`
+--
+
+INSERT INTO `users_orders` (`o_id`, `u_id`, `title`, `quantity`, `price`, `status`, `date`) VALUES
+(23, 9, 'Chicken Madeira', 1, '23.00', NULL, '2023-07-04 15:07:51'),
+(24, 9, 'Cheesy Mashed Potato', 1, '5.00', NULL, '2023-07-04 15:13:58'),
+(25, 9, 'Cheesy Mashed Potato', 1, '5.00', NULL, '2023-07-04 15:14:49'),
+(26, 9, 'Crispy Chicken Strips', 1, '8.00', NULL, '2023-07-04 15:16:29'),
+(27, 9, ' Buffalo Wings', 1, '11.00', NULL, '2023-07-04 15:20:41'),
+(28, 9, 'Lemon Grilled Chicken And Pasta', 1, '11.00', NULL, '2023-07-04 15:27:14'),
+(29, 9, 'Prawn Crackers', 1, '7.00', NULL, '2023-07-04 15:36:54'),
+(30, 9, 'Spring Rolls', 1, '6.00', NULL, '2023-07-04 15:38:52'),
+(31, 9, 'Spring Rolls', 1, '6.00', NULL, '2023-07-04 15:44:53'),
+(32, 9, 'Crispy Chicken Strips', 1, '8.00', NULL, '2023-07-04 15:45:17'),
+(33, 9, 'Meatballs Penne Pasta', 1, '10.00', NULL, '2023-07-04 15:47:09'),
+(34, 9, 'Manchurian Chicken', 1, '11.00', NULL, '2023-07-04 15:56:46'),
+(35, 9, 'Cheesy Mashed Potato', 1, '5.00', NULL, '2023-07-04 15:57:22'),
+(36, 9, 'Lobster Thermidor', 1, '36.00', NULL, '2023-07-04 16:05:17'),
+(37, 9, 'Spring Rolls', 1, '6.00', NULL, '2023-07-04 16:10:18'),
+(38, 9, 'Vegetable Fried Rice', 1, '5.00', NULL, '2023-07-04 16:12:16'),
+(39, 9, 'Yorkshire Lamb Patties', 1, '14.00', NULL, '2023-07-05 06:08:50'),
+(40, 9, 'Pink Spaghetti Gamberoni', 1, '21.00', NULL, '2023-07-05 06:13:54'),
+(41, 9, 'Pink Spaghetti Gamberoni', 1, '21.00', NULL, '2023-07-05 06:16:56'),
+(42, 9, 'Crispy Chicken Strips', 2, '8.00', NULL, '2023-07-05 06:17:46'),
+(43, 9, 'Lemon Grilled Chicken And Pasta', 1, '11.00', NULL, '2023-07-05 06:28:51'),
+(44, 9, 'Prawn Crackers', 1, '7.00', NULL, '2023-07-05 06:29:14'),
+(45, 9, 'Chicken Madeira', 1, '23.00', NULL, '2023-07-05 06:30:37'),
+(46, 9, 'Stuffed Jacket Potatoes', 1, '8.00', NULL, '2023-07-05 06:47:22'),
+(47, 9, 'Signature Potato Twisters', 1, '6.00', NULL, '2023-07-05 06:47:58'),
+(48, 9, 'Meatballs Penne Pasta', 1, '10.00', NULL, '2023-07-05 06:48:49'),
+(49, 9, 'Spring Rolls', 1, '6.00', NULL, '2023-07-05 07:36:50'),
+(50, 15, 'Prawn Crackers', 1, '7.00', NULL, '2023-07-05 08:06:18'),
+(51, 15, 'Chicken Madeira', 1, '23.00', NULL, '2023-07-05 08:06:38');
 
 --
 -- Indexes for dumped tables
@@ -191,6 +267,13 @@ CREATE TABLE `users_orders` (
 --
 ALTER TABLE `admin`
   ADD PRIMARY KEY (`adm_id`);
+
+--
+-- Indexes for table `credit_cards`
+--
+ALTER TABLE `credit_cards`
+  ADD PRIMARY KEY (`card_id`),
+  ADD KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `dishes`
@@ -236,43 +319,59 @@ ALTER TABLE `users_orders`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `adm_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `adm_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `credit_cards`
+--
+ALTER TABLE `credit_cards`
+  MODIFY `card_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `dishes`
 --
 ALTER TABLE `dishes`
-  MODIFY `d_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `d_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `remark`
 --
 ALTER TABLE `remark`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `restaurant`
 --
 ALTER TABLE `restaurant`
-  MODIFY `rs_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `rs_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `res_category`
 --
 ALTER TABLE `res_category`
-  MODIFY `c_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `c_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `u_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `u_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `users_orders`
 --
 ALTER TABLE `users_orders`
-  MODIFY `o_id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `o_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `credit_cards`
+--
+ALTER TABLE `credit_cards`
+  ADD CONSTRAINT `credit_cards_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`u_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
